@@ -18,6 +18,7 @@ import (
 
 	"github.com/runatlantis/atlantis/server/events/locking"
 	"github.com/runatlantis/atlantis/server/events/models"
+	"github.com/runatlantis/atlantis/server/events/vcs"
 	"github.com/runatlantis/atlantis/server/logging"
 )
 
@@ -37,7 +38,8 @@ type ProjectLocker interface {
 
 // DefaultProjectLocker implements ProjectLocker.
 type DefaultProjectLocker struct {
-	Locker locking.Locker
+	Locker    locking.Locker
+	VCSClient vcs.Client
 }
 
 // TryLockResponse is the result of trying to lock a project.
@@ -68,6 +70,15 @@ func (p *DefaultProjectLocker) TryLock(log *logging.SimpleLogger, pull models.Pu
 			lockAttempt.CurrLock.Pull.Num)
 		return &TryLockResponse{
 			LockAcquired:      false,
+			LockFailureReason: failureMsg,
+		}, nil
+	}
+	log.Info("updating pull request with lock label")
+	err = p.VCSClient.UpdateLabels(pull)
+	if err != nil {
+		failureMsg := fmt.Sprintf("Project locked successfully, but failure to update labels on pull request.")
+		return &TryLockResponse{
+			LockAcquired: true,
 			LockFailureReason: failureMsg,
 		}, nil
 	}

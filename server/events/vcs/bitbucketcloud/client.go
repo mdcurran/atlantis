@@ -196,6 +196,10 @@ func (b *Client) MergePull(pull models.PullRequest) error {
 	return err
 }
 
+func (b *Client) UpdateLabels(pull models.PullRequest) error {
+	return nil
+}
+
 // prepRequest adds auth and necessary headers.
 func (b *Client) prepRequest(method string, path string, body io.Reader) (*http.Request, error) {
 	req, err := http.NewRequest(method, path, body)

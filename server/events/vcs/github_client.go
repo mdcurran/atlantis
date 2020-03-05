@@ -232,3 +232,12 @@ func (g *GithubClient) MergePull(pull models.PullRequest) error {
 	}
 	return nil
 }
+
+// UpdateLabels updates the labels assigned to a pull request.
+func (g *GithubClient) UpdateLabels(pull models.PullRequest) error {
+	_, _, err := g.client.Issues.AddLabelsToIssue(g.ctx, pull.BaseRepo.Owner, pull.BaseRepo.Name, pull.Num, []string{"lock"})
+	if err != nil {
+		return err
+	}
+	return nil
+}

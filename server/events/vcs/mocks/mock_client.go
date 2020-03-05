@@ -127,6 +127,10 @@ func (mock *MockClient) MergePull(pull models.PullRequest) error {
 	return ret0
 }
 
+func (mock *MockClient) UpdateLabels(pull models.PullRequest) error {
+	return nil
+}
+
 func (mock *MockClient) VerifyWasCalledOnce() *VerifierMockClient {
 	return &VerifierMockClient{
 		mock:                   mock,

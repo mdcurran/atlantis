@@ -293,6 +293,10 @@ func (g *AzureDevopsClient) MergePull(pull models.PullRequest) error {
 	return nil
 }
 
+func (g *AzureDevopsClient) UpdateLabels(pull models.PullRequest) error {
+	return nil
+}
+
 // SplitAzureDevopsRepoFullName splits a repo full name up into its owner,
 // repo and project name segments. If the repoFullName is malformed, may
 // return empty strings for owner, repo, or project.  Azure DevOps uses

@@ -61,6 +61,7 @@ const (
 	GitlabTokenFlag            = "gitlab-token"
 	GitlabUserFlag             = "gitlab-user"
 	GitlabWebhookSecretFlag    = "gitlab-webhook-secret" // nolint: gosec
+	LabelLockPRFlag            = "label-lock-pr"
 	LogLevelFlag               = "log-level"
 	PortFlag                   = "port"
 	RepoConfigFlag             = "repo-config"
@@ -248,6 +249,10 @@ var boolFlags = map[string]boolFlag{
 	},
 	DisableApplyAllFlag: {
 		description:  "Disable \"atlantis apply\" command so a specific project/workspace/directory has to be specified for applies.",
+		defaultValue: false,
+	},
+	LabelLockPRFlag: {
+		description: "Assign a label to the pull request which currently holds the Terraform lock.",
 		defaultValue: false,
 	},
 	RequireApprovalFlag: {
