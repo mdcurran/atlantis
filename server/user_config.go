@@ -29,7 +29,7 @@ type UserConfig struct {
 	GitlabToken                string `mapstructure:"gitlab-token"`
 	GitlabUser                 string `mapstructure:"gitlab-user"`
 	GitlabWebhookSecret        string `mapstructure:"gitlab-webhook-secret"`
-	LabelLockPR				   bool   `mapstructure:"label-lock-pr"`
+	LabelLockPR                bool   `mapstructure:"label-lock-pr"`
 	LogLevel                   string `mapstructure:"log-level"`
 	Port                       int    `mapstructure:"port"`
 	RepoConfig                 string `mapstructure:"repo-config"`
