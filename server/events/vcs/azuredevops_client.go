@@ -293,7 +293,11 @@ func (g *AzureDevopsClient) MergePull(pull models.PullRequest) error {
 	return nil
 }
 
-func (g *AzureDevopsClient) UpdateLabels(pull models.PullRequest) error {
+func (g *AzureDevopsClient) CreateLabel(pull models.PullRequest) error {
+	return nil
+}
+
+func (g *AzureDevopsClient) DeleteLabel(pull models.PullRequest) error {
 	return nil
 }
 

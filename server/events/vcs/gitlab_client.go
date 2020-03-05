@@ -212,7 +212,11 @@ func (g *GitlabClient) MergePull(pull models.PullRequest) error {
 	return errors.Wrap(err, "unable to merge merge request, it may not be in a mergeable state")
 }
 
-func (g *GitlabClient) UpdateLabels(pull models.PullRequest) error {
+func (g *GitlabClient) CreateLabel(pull models.PullRequest) error {
+	return nil
+}
+
+func (g *GitlabClient) DeleteLabel(pull models.PullRequest) error {
 	return nil
 }
 

@@ -233,9 +233,18 @@ func (g *GithubClient) MergePull(pull models.PullRequest) error {
 	return nil
 }
 
-// UpdateLabels updates the labels assigned to a pull request.
-func (g *GithubClient) UpdateLabels(pull models.PullRequest) error {
+// CreateLabel adds one or more labels to a pull request.
+func (g *GithubClient) CreateLabel(pull models.PullRequest) error {
 	_, _, err := g.client.Issues.AddLabelsToIssue(g.ctx, pull.BaseRepo.Owner, pull.BaseRepo.Name, pull.Num, []string{"lock"})
+	if err != nil {
+		return err
+	}
+	return nil
+}
+
+// DeleteLabel removes a single label from a pull request.
+func (g *GithubClient) DeleteLabel(pull models.PullRequest) error {
+	_, err := g.client.Issues.RemoveLabelForIssue(g.ctx, pull.BaseRepo.Owner, pull.BaseRepo.Name, pull.Num, "lock")
 	if err != nil {
 		return err
 	}

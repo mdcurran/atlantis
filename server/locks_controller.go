@@ -123,6 +123,10 @@ func (l *LocksController) DeleteLock(w http.ResponseWriter, r *http.Request) {
 	} else {
 		l.Logger.Debug("skipping commenting on pull request and deleting workspace because BaseRepo field is empty")
 	}
+	err = l.VCSClient.DeleteLabel(lock.Pull)
+	if err != nil {
+		l.Logger.Warn("unable to delete \"lock\" label from pull request")
+	}
 	l.respond(w, logging.Info, http.StatusOK, "Deleted lock id %q", id)
 }
 

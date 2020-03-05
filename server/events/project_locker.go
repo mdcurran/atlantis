@@ -74,7 +74,7 @@ func (p *DefaultProjectLocker) TryLock(log *logging.SimpleLogger, pull models.Pu
 		}, nil
 	}
 	log.Info("updating pull request with lock label")
-	err = p.VCSClient.UpdateLabels(pull)
+	err = p.VCSClient.CreateLabel(pull)
 	if err != nil {
 		failureMsg := fmt.Sprintf("Project locked successfully, but failure to update labels on pull request.")
 		return &TryLockResponse{

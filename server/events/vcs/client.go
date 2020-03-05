@@ -36,5 +36,6 @@ type Client interface {
 	// about this status.
 	UpdateStatus(repo models.Repo, pull models.PullRequest, state models.CommitStatus, src string, description string, url string) error
 	MergePull(pull models.PullRequest) error
-	UpdateLabels(pull models.PullRequest) error
+	CreateLabel(pull models.PullRequest) error
+	DeleteLabel(pull models.PullRequest) error
 }

@@ -76,6 +76,10 @@ func (d *ClientProxy) MergePull(pull models.PullRequest) error {
 	return d.clients[pull.BaseRepo.VCSHost.Type].MergePull(pull)
 }
 
-func (d *ClientProxy) UpdateLabels(pull models.PullRequest) error {
-	return d.clients[pull.BaseRepo.VCSHost.Type].UpdateLabels(pull)
+func (d *ClientProxy) CreateLabel(pull models.PullRequest) error {
+	return d.clients[pull.BaseRepo.VCSHost.Type].CreateLabel(pull)
+}
+
+func (d *ClientProxy) DeleteLabel(pull models.PullRequest) error {
+	return d.clients[pull.BaseRepo.VCSHost.Type].DeleteLabel(pull)
 }

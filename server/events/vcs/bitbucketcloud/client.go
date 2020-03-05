@@ -196,7 +196,11 @@ func (b *Client) MergePull(pull models.PullRequest) error {
 	return err
 }
 
-func (b *Client) UpdateLabels(pull models.PullRequest) error {
+func (b *Client) CreateLabel(pull models.PullRequest) error {
+	return nil
+}
+
+func (b *Client) DeleteLabel(pull models.PullRequest) error {
 	return nil
 }
 

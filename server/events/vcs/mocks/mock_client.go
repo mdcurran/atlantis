@@ -127,7 +127,11 @@ func (mock *MockClient) MergePull(pull models.PullRequest) error {
 	return ret0
 }
 
-func (mock *MockClient) UpdateLabels(pull models.PullRequest) error {
+func (mock *MockClient) CreateLabel(pull models.PullRequest) error {
+	return nil
+}
+
+func (mock *MockClient) DeleteLabel(pull models.PullRequest) error {
 	return nil
 }
 
